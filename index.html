@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿What is your goal here?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- CONTENEDOR DEL CRONÓMETRO -->
+    <div class="timer-container">
+        <span id="hours">27</span>
+        <span class="separator">:</span>
+        <span id="minutes">00</span>
+        <span class="separator">:</span>
+        <span id="seconds">00</span>
+    </div>
+
+    <script>
+        // TIEMPO INICIAL: 27 HORAS EN SEGUNDOS
+        let totalSeconds = 27 * 60 * 60;
+
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+
+        function updateTimer() {
+            if (totalSeconds <= 0) {
+                totalSeconds = 0;
+                clearInterval(timerInterval);
+            }
+
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            hoursEl.textContent = String(hours).padStart(2, "0");
+            minutesEl.textContent = String(minutes).padStart(2, "0");
+            secondsEl.textContent = String(seconds).padStart(2, "0");
+
+            totalSeconds--;
+        }
+
+        updateTimer();
+        const timerInterval = setInterval(updateTimer, 1000);
+    </script>
+<body>
+
+    <div class="background-overlay"></div>
+
+    <div class="timer-container">
+    
+    </div>
+
+</body>
+
+</body>
+</html>
